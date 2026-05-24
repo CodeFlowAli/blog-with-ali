@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Blog With Ali Demo</title>
+  <meta name="description" content="Frontend-only demo dashboard for managing Blog With Ali posts in localStorage." />
+  <meta name="keywords" content="Blog With Ali admin dashboard, demo CRUD, localStorage blog posts" />
+  <meta name="author" content="Ali" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://blogwithali.example/admin-dashboard.html" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Admin Dashboard | Blog With Ali Demo" />
+  <meta property="og:description" content="Frontend-only demo dashboard for managing Blog With Ali posts in localStorage." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:url" content="https://blogwithali.example/admin-dashboard.html" />
+  <meta property="og:site_name" content="Blog With Ali" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Admin Dashboard | Blog With Ali Demo" />
+  <meta name="twitter:description" content="Frontend-only demo dashboard for managing Blog With Ali posts in localStorage." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body data-page="admin-dashboard" class="admin-page">
+  <!-- Frontend-only demo protection is not real production security. A live admin panel must use backend authentication. -->
+  <main class="admin-layout" id="mainContent">
+    <aside class="admin-sidebar" aria-label="Admin sidebar">
+      <a class="logo admin-logo" href="index.html">
+        <span class="logo-mark"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
+        <span>Blog With Ali</span>
+      </a>
+      <nav aria-label="Admin navigation">
+        <a href="#dashboardOverview"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Dashboard</a>
+        <a href="#addPost"><i class="fa-solid fa-square-plus" aria-hidden="true"></i> Add Post</a>
+        <a href="#managePosts"><i class="fa-solid fa-table-list" aria-hidden="true"></i> Manage Posts</a>
+        <a href="index.html"><i class="fa-solid fa-globe" aria-hidden="true"></i> View Website</a>
+      </nav>
+      <button class="btn btn-secondary admin-logout" id="logoutAdmin" type="button"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Logout</button>
+    </aside>
+
+    <section class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <p class="eyebrow"><i class="fa-solid fa-user-shield" aria-hidden="true"></i> Frontend Demo Admin</p>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <span class="admin-badge">Demo Mode</span>
+      </div>
+
+      <section class="admin-warning" aria-label="Security notice">
+        <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+        <p>This dashboard stores demo posts in browser localStorage. It is useful for frontend preview only, not secure production management.</p>
+      </section>
+
+      <section id="dashboardOverview" class="admin-section" aria-labelledby="dashboardTitle">
+        <h2 id="dashboardTitle">Overview</h2>
+        <div class="admin-stats-grid">
+          <div class="admin-stat"><i class="fa-solid fa-newspaper" aria-hidden="true"></i><span>Total Posts</span><strong id="statTotalPosts">0</strong></div>
+          <div class="admin-stat"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Published</span><strong id="statPublishedPosts">0</strong></div>
+          <div class="admin-stat"><i class="fa-solid fa-file-pen" aria-hidden="true"></i><span>Drafts</span><strong id="statDraftPosts">0</strong></div>
+          <div class="admin-stat"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>Categories</span><strong id="statCategories">0</strong></div>
+        </div>
+      </section>
+
+      <section id="addPost" class="admin-section" aria-labelledby="addPostTitle">
+        <h2 id="addPostTitle">Add / Edit Blog Post</h2>
+        <form id="adminPostForm" class="admin-post-form" novalidate>
+          <input type="hidden" id="postId" />
+          <div class="form-grid two-cols">
+            <div class="form-row">
+              <label for="postTitle">Blog Title</label>
+              <input id="postTitle" type="text" required />
+            </div>
+            <div class="form-row">
+              <label for="postSlug">Slug</label>
+              <input id="postSlug" type="text" required />
+            </div>
+            <div class="form-row">
+              <label for="postCategory">Category</label>
+              <select id="postCategory" required>
+                <option value="Technology">Technology</option>
+                <option value="Web Development">Web Development</option>
+                <option value="AI Tools">AI Tools</option>
+                <option value="Freelancing">Freelancing</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Tutorials">Tutorials</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="postStatus">Status</label>
+              <select id="postStatus" required>
+                <option value="Published">Published</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </div>
+            <div class="form-row full-span">
+              <label for="postImage">Featured Image URL</label>
+              <input id="postImage" type="url" placeholder="https://images.unsplash.com/..." />
+            </div>
+            <div class="form-row full-span">
+              <label for="postExcerpt">Short Excerpt</label>
+              <textarea id="postExcerpt" rows="3" required></textarea>
+            </div>
+            <div class="form-row full-span">
+              <label for="postContent">Full Article Content</label>
+              <textarea id="postContent" rows="7" placeholder="Write article content for demo storage..."></textarea>
+            </div>
+            <div class="form-row">
+              <label for="postTags">Tags</label>
+              <input id="postTags" type="text" placeholder="AI, tools, productivity" />
+            </div>
+            <div class="form-row">
+              <label for="postSeoTitle">SEO Title</label>
+              <input id="postSeoTitle" type="text" />
+            </div>
+            <div class="form-row full-span">
+              <label for="postSeoDescription">SEO Description</label>
+              <textarea id="postSeoDescription" rows="3"></textarea>
+            </div>
+            <div class="form-row full-span">
+              <label for="postSeoKeywords">SEO Keywords</label>
+              <input id="postSeoKeywords" type="text" placeholder="keyword one, keyword two" />
+            </div>
+          </div>
+          <div class="admin-form-actions">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save Post</button>
+            <button class="btn btn-secondary" id="resetPostForm" type="button"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset</button>
+            <p class="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="managePosts" class="admin-section" aria-labelledby="managePostsTitle">
+        <div class="admin-section-head">
+          <h2 id="managePostsTitle">Manage Posts</h2>
+          <button class="btn btn-secondary" id="seedDemoPosts" type="button"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Restore Sample Posts</button>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <caption class="sr-only">Demo blog posts table</caption>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminPostsTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>

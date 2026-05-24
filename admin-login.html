@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Blog With Ali Demo Panel</title>
+  <meta name="description" content="Frontend-only demo admin login page for Blog With Ali local website management preview." />
+  <meta name="keywords" content="Blog With Ali admin login, demo admin panel, frontend admin" />
+  <meta name="author" content="Ali" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://blogwithali.example/admin-login.html" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Admin Login | Blog With Ali Demo Panel" />
+  <meta property="og:description" content="Frontend-only demo admin login page for Blog With Ali local website management preview." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:url" content="https://blogwithali.example/admin-login.html" />
+  <meta property="og:site_name" content="Blog With Ali" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Admin Login | Blog With Ali Demo Panel" />
+  <meta name="twitter:description" content="Frontend-only demo admin login page for Blog With Ali local website management preview." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Admin Login - Blog With Ali",
+    "url": "https://blogwithali.example/admin-login.html",
+    "description": "Frontend-only demo admin login page for Blog With Ali."
+  }
+  </script>
+</head>
+<body data-page="admin-login" class="admin-auth-page">
+  <main class="admin-auth-wrap" id="mainContent">
+    <section class="admin-auth-card" aria-labelledby="adminLoginTitle">
+      <a class="logo auth-logo" href="index.html" aria-label="Back to Blog With Ali home">
+        <span class="logo-mark"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
+        <span>Blog With Ali</span>
+      </a>
+      <p class="eyebrow"><i class="fa-solid fa-lock" aria-hidden="true"></i> Demo Admin Access</p>
+      <h1 id="adminLoginTitle">Admin Login</h1>
+      
+      <form id="adminLoginForm" class="admin-login-form" novalidate>
+        <div class="form-row">
+          <label for="adminEmail">Email</label>
+          <input id="adminEmail" name="email" type="email" placeholder="Enter Admin Email" autocomplete="username" required />
+        </div>
+        <div class="form-row">
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn-primary full-btn" type="submit"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Login</button>
+        <p class="form-message" role="status" aria-live="polite"></p>
+      </form>
+      <div class="demo-credentials" style="display: none;">
+        <strong>Demo Login:</strong>
+        <span>Email: admin@blogwithali.com</span>
+        <span>Password: admin123</span>
+      </div>
+      <a class="auth-back-link" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to website</a>
+    </section>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
